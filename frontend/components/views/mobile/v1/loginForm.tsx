@@ -50,7 +50,7 @@ export default function MobileLoginPage() {
 
                 {/* Login Form */}
                 <Suspense fallback={<Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}>
-                    <LazyAuthForm className="w-full" />
+                    <LazyAuthForm className="w-full" desktop={false} />
                 </Suspense>
 
                 <p className="px-8 text-center text-sm text-muted-foreground">
