@@ -30,13 +30,15 @@ export function UserAuthForm({ className, desktop, ...props }: UserAuthFormProps
         }
     }
 
-    const onSubmit = async (event: React.SyntheticEvent) => {
+    const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
+        console.log('Form submitted');
         setIsLoading(true)
         setTimeout(() => {
             setIsLoading(false)
-        }, 3000)
+        }, 10000)
     }
+    
 
     return (
         <div className={cn("grid gap-6", className)} {...props}>
@@ -52,6 +54,7 @@ export function UserAuthForm({ className, desktop, ...props }: UserAuthFormProps
                             type="email"
                             autoCapitalize="none"
                             autoComplete="email"
+                            required
                             autoCorrect="off"
                             disabled={isLoading}
                             onChange={(e) => setEmail(e.target.value)}
@@ -67,43 +70,38 @@ export function UserAuthForm({ className, desktop, ...props }: UserAuthFormProps
                             autoCapitalize="none"
                             autoComplete="password"
                             autoCorrect="off"
+                            required
                             disabled={isLoading}
                             onChange={(e) => setPassword(e.target.value)}
                         />
-                        <Button className="w-full" variant="outline" type="button" disabled={isLoading} onClick={nextStep} >
+                        <Button className="w-full" variant="outline" type="submit" disabled={isLoading} >
                             {isLoading && (
-                                <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+                                <Icons.spinner data-testid="spinner" className="h-4 w-4 animate-spin" />
                             )}
-                            {!isEmailValid ? "Entrar com e-mail" : "Entrar"}
+                            Entrar com e-mail
                         </Button>
                     </div>
                 </div>
             </form>
 
-            {!isEmailValid && (
-                <div className="relative">
-                    <div className="absolute inset-0 flex items-center">
-                        <span className="w-full border-t" />
-                    </div>
-                    <div className="relative flex justify-center text-xs uppercase">
-                        <span className="bg-background px-2 text-muted-foreground">
-                            Ou continue usando
-                        </span>
-                    </div>
+            <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                    <span className="w-full border-t" />
                 </div>
-            )}
-
-            {!isEmailValid && (
-                <Button className="w-full" variant="outline" type="button" disabled={isLoading}>
-                    {isLoading ? (
-                        <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-                    ) : (
-                        <Icons.gitHub className="mr-2 h-4 w-4" />
-                    )}
-                    GitHub
-                </Button>
-            )}
-
+                <div className="relative flex justify-center text-xs uppercase">
+                    <span className="bg-background px-2 text-muted-foreground">
+                        Ou continue usando
+                    </span>
+                </div>
+            </div>
+            <Button className="w-full" variant="outline" type="button" disabled={isLoading}>
+                {isLoading ? (
+                    <Icons.spinner className="h-4 w-4 animate-spin" />
+                ) : (
+                    <Icons.gitHub className="mr-2 h-4 w-4" />
+                )}
+                GitHub
+            </Button>
             {desktop && (
                 <div className="relative">
                     <div className="absolute inset-0 flex items-center">

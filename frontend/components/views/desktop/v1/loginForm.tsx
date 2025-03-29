@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 export default function DesktopLoginPage() {
     return (
         <div className="w-dvw h-dvh max-h-dvh flex flex-row">
-            <div className="banner w-1/2 h-full relative p-6 md:hidden lg:block transition-all duration-300">
+            <div className="banner w-1/2 h-full relative p-6 sm:hidden md:hidden lg:block transition-all duration-300">
                 <div className="object-cover h-full w-full absolute inset-0 bg-gray-800"></div>
                 <div className="relative h-full flex flex-col justify-between">
                     {/* Logo */}
@@ -31,7 +31,7 @@ export default function DesktopLoginPage() {
                 </div>
             </div>
             {/* Form Section */}
-            <div className="form lg:w-1/2 md:w-full h-full flex flex-col items-center justify-center p-4 pl-8 pr-8 gap-4 relative flex-start">
+            <div className="form lg:w-1/2 md:w-full sm:w-full h-full flex flex-col items-center justify-center p-4 pl-8 pr-8 gap-4 relative flex-start">
                 <div className="h-full w-full absolute inset-0">
                     <Image
                         src="https://cdn.statically.io/gh/BrunoV7/images/main/Lavendery%2520-%252006.jpeg"
