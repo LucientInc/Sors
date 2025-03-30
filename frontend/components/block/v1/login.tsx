@@ -117,7 +117,7 @@ export function UserAuthForm({ className, desktop, ...props }: UserAuthFormProps
             )}
             {desktop && (
                 <Button className="w-full" disabled={isLoading} onClick={nextStep}>
-                    <Link href="/register">Cadastre-se</Link>
+                    <Link href="/v1/auth/register">Cadastre-se</Link>
                 </Button>
             )}
         </div>
