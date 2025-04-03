@@ -30,15 +30,32 @@ export function UserAuthForm({ className, desktop, ...props }: UserAuthFormProps
         }
     }
 
-    const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
-        console.log('Form submitted');
-        setIsLoading(true)
+    const login = (email: string, password: string) => {
+        const login = {
+            email: email,
+            password: password
+        }
         setTimeout(() => {
-            setIsLoading(false)
-        }, 10000)
+            setIsLoading(true)
+        }, 3000)
+        console.log(login)
     }
-    
+
+    const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        if (!isEmailValid) {
+            setIsLoading(true);
+            try {
+                await login(email, password);
+            } catch (error) {
+                console.error("Erro ao fazer login", error);
+            } finally {
+                setIsLoading(false);
+            }
+        } else {
+            console.log("Email inválido");
+        }
+    };
 
     return (
         <div className={cn("grid gap-6", className)} {...props}>
