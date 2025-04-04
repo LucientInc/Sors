@@ -2,8 +2,6 @@
 import React, { Suspense } from 'react';
 import Link from "next/link";
 const LazyAuthForm = React.lazy(() => import('@/components/block/v1/login').then(module => ({ default: module.UserAuthForm })));
-
-import dynamic from 'next/dynamic'
 import { Button } from '@/components/ui/button';
 
 

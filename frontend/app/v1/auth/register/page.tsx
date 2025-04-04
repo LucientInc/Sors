@@ -5,27 +5,8 @@ import { Icons } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { profile } from "console";
-import { useEffect, useState } from "react";
-import Stepper from "@/components/block/v1/stepper";
-import { tree } from "next/dist/build/templates/app-page";
-import { Progress } from "@/components/ui/progress";
-
-export const newUser = {
-    email: "",
-    password: "",
-    confirmPassword: "",
-    firstName: "",
-    lastName: "",
-    city: "",
-    state: "",
-    country: "",
-    birthDate: "",
-    provider: "",
-    profilePicture: "",
-}
-
-
+const LazyAuthForm = React.lazy(() => import('@/components/block/v1/stacked-progress-bar'));
+import { Suspense } from "react";
 
 export default function RegisterPage() {
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
@@ -35,7 +16,20 @@ export default function RegisterPage() {
     const [confirmPassword, setConfirmPassword] = React.useState<string>("");
     const [email, setEmail] = React.useState<string>("");
     const [email2, setEmail2] = React.useState<string>("");
-    const [newUserState, setNewUser] = React.useState<typeof newUser>({
+    type newUser = {
+        email: string,
+        password: string,
+        confirmPassword: string,
+        firstName: string,
+        lastName: string,
+        city: string,
+        state: string,
+        country: string,
+        birthDate: string,
+        provider: string,
+        profilePicture: string
+    }
+    const [newUserState, setNewUser] = React.useState<newUser>({
         email: "",
         password: "",
         confirmPassword: "",
@@ -49,7 +43,7 @@ export default function RegisterPage() {
         profilePicture: "",
     })
 
-    useEffect(() => {
+    React.useEffect(() => {
         isEmailEqual()
     }, []);
 
@@ -75,7 +69,6 @@ export default function RegisterPage() {
         }
     }
 
-
     const PasswordChecker = () => {
         if (password === confirmPassword) {
             setIsPasswordEqual(true);
@@ -88,15 +81,12 @@ export default function RegisterPage() {
     return (
         <div className="flex flex-col md:flex-row items-center justify-center bg-white w-dvw h-dvh max-h-dvh lg:overflow-hidden">
             <div className="banner w-1/2 h-full relative p-6 hidden lg:block transition-all duration-300 border-r border-gray-900">
-                <div className="object-cover h-full w-full absolute inset-0 bg-zinc-500"></div>
-                <div className="relative h-full flex justify-between flex-col-reverse">
+                <div className="object-cover h-full w-full absolute inset-0 bg-gray-500"></div>
+                <div className="relative h-full flex justify-end flex-col">
 
-                    2132
-                    <div className="flex gap-4 p-6">
-                    <Progress value={33} />
-                    <Progress value={33} />
-                    <Progress value={33} />
-                    </div>
+                    <Suspense fallback={<div></div>}>
+                        <LazyAuthForm className="w-full"/>
+                    </Suspense>
 
                 </div>
             </div>
