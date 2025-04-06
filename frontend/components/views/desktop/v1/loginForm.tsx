@@ -4,7 +4,7 @@ import React, { Suspense } from 'react';
 import Image from 'next/image'
 const LazyAuthForm = React.lazy(() => import('@/components/block/v1/login').then(module => ({ default: module.UserAuthForm })));
 import { Icons } from '@/components/ui/icons';
-export default function LoginPage() {
+export default function DesktopLoginPage() {
     return (
         <div className="w-dvw h-dvh max-h-dvh flex flex-row">
             <div className="banner w-1/2 h-full relative p-6 hidden lg:block transition-all duration-300 border-r border-gray-900">
