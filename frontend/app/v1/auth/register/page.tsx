@@ -5,7 +5,10 @@ import { Icons } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-const LazyAuthForm = React.lazy(() => import('@/components/block/v1/stacked-progress-bar'));
+import Image from 'next/image'
+const LazyFlipWords = React.lazy(() =>
+    import('@/components/block/v1/banner-text').then(module => ({ default: module.BannerText }))
+);
 import { Suspense } from "react";
 
 export default function RegisterPage() {
@@ -46,16 +49,11 @@ export default function RegisterPage() {
     const isEmailEqual = useCallback(() => {
         if (email === email2) {
             setIsEmailValid(true);
-            setNewUser({ ...newUserState, email: email });
-            console.log(newUserState);
+            setNewUser((prevState) => ({ ...prevState, email }));
         } else {
             setIsEmailValid(false);
         }
-    }, [email, email2, newUserState]);
-
-    React.useEffect(() => {
-        isEmailEqual();
-    }, [isEmailEqual]);
+    }, [email, email2]);
 
     const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         console.log('Form submitted');
@@ -80,15 +78,23 @@ export default function RegisterPage() {
     return (
         <div className="flex flex-col md:flex-row items-center justify-center bg-white w-dvw h-dvh max-h-dvh lg:overflow-hidden">
             <div className="banner w-1/2 h-full relative p-6 hidden lg:block transition-all duration-300 border-r border-gray-900">
-                <div className="object-cover h-full w-full absolute inset-0 bg-gray-500"></div>
-                <div className="relative h-full flex justify-end flex-col">
-
-                    <Suspense fallback={<div></div>}>
-                        <LazyAuthForm className="w-full"/>
+                <div className="object-cover h-full w-full absolute inset-0 bg-zinc-900">
+                    <Image
+                        src="https://cdn.statically.io/gh/BrunoV7/images/main/Nova-04-1-_1_.webp"
+                        alt="Arte abstrata fluida em azul e prata, simbolizando controle e organização financeira."
+                        priority={false}
+                        quality={80}
+                        fill={true}
+                    />
+                </div>
+                <div className="relative h-full flex flex-col justify-end">
+                    {/* Slogan */}
+                    <Suspense fallback={<div className="flex justify-center items-center h-full w-full"><Icons.spinner className="h-8 w-8 animate-spin" /></div>}>
+                        <LazyFlipWords />
                     </Suspense>
-
                 </div>
             </div>
+
             <div className="md:w-1/2 lg:w-1/2 w-full h-dvh md:flex md:flex-col md:justify-evenly">
                 <div className="flex flex-col md:flex-row lg:flex-row gap-4 justify-between w-full p-4 pl-8 pr-8  md:pl-16 md:pr-16 bg-white">
                     {/* Logo */}

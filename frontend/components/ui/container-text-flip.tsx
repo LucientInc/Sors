@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useId } from "react";
-import "@/app/styles/prism-theme.css";
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils"
@@ -33,8 +32,9 @@ export function ContainerTextFlip({
 
   const updateWidthForWord = () => {
     if (textRef.current) {
-      // @ts-expect-error Add some padding to the text width (30px on each side)
-      const textWidth = textRef.current.scrollWidth + 30;
+      // Add some padding to the text width (30px on each side)
+      // @ts-ignore
+      const textWidth = textRef.current.scrollWidth + 0;
       setWidth(textWidth);
     }
   };
@@ -48,22 +48,22 @@ export function ContainerTextFlip({
     const intervalId = setInterval(() => {
       setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
       // Width will be updated in the effect that depends on currentWordIndex
+      //"[background:linear-gradient(to_bottom,#f3f4f6,#e5e7eb)]",
+      // "shadow-[inset_0_-1px_#d1d5db,inset_0_0_0_1px_#d1d5db,_0_4px_8px_#d1d5db]",
     }, interval);
 
     return () => clearInterval(intervalId);
   }, [words, interval]);
 
   return (
-    <motion.p
+    <motion.div
       layout
       layoutId={`words-here-${id}`}
       animate={{ width }}
       transition={{ duration: animationDuration / 2000 }}
       className={cn(
-        "relative inline-block rounded-lg pt-2 pb-3 text-center text-4xl font-bold text-black md:text-7xl dark:text-white",
-        "[background:linear-gradient(to_bottom,var(--color-gray-100),var(--color-gray-200))]",
-        "shadow-[inset_0_-1px_var(--color-gray-300),inset_0_0_0_1px_var(--color-gray-300),_0_4px_8px_var(--color-gray-300)]",
-        "dark:[background:linear-gradient(to_bottom,var(--color-neutral-700),var(--color-neutral-800))]",
+        "relative inline-block rounded-lg pt-2 pb-3 text-center text-3xl font-bold text-white md:text-5xl dark:text-white",
+        "dark:[background:linear-gradient(to_bottom,#374151,#1f2937)]",
         "dark:shadow-[inset_0_-1px_#10171e,inset_0_0_0_1px_hsla(205,89%,46%,.24),_0_4px_8px_#00000052]",
         className,
       )}
@@ -99,6 +99,6 @@ export function ContainerTextFlip({
           ))}
         </motion.div>
       </motion.div>
-    </motion.p>
-  );
+    </motion.div>
+  );  
 }

@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { cn } from '@/lib/utils';
 
 export function ContainerTextFlipDemo() {
-  const words = ["better", "modern", "beautiful", "awesome"];
+  const words = ["estável", "organizada", "inteligente", "tranquila", "completa", "clara"];
   return (
     <motion.h1
       initial={{
@@ -14,14 +14,16 @@ export function ContainerTextFlipDemo() {
         opacity: 1,
       }}
       className={cn(
-        "relative mb-6 max-w-2xl text-left text-4xl leading-normal font-bold tracking-tight text-zinc-700 md:text-7xl dark:text-zinc-100",
+        "relative mb-6 max-w-2xl text-left text-3xl leading-normal font-bold tracking-tight text-white md:text-5xl dark:text-zinc-100",
       )}
       layout
     >
       <div className="inline-block">
-        Make your websites look 10x <ContainerTextFlip words={words} />
+        Sua vida financeira bem mais <ContainerTextFlip words={words} />
         {/* <Blips /> */}
       </div>
     </motion.h1>
   );
 }
+
+export { ContainerTextFlipDemo as BannerText };
