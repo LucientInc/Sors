@@ -20,10 +20,10 @@ export interface ContainerTextFlipProps {
 
 export function ContainerTextFlip({
   words = ["better", "modern", "beautiful", "awesome"],
-  interval = 3000,
+  interval = 4000,
   className,
   textClassName,
-  animationDuration = 700,
+  animationDuration = 1000,
 }: ContainerTextFlipProps) {
   const id = useId();
   const [currentWordIndex, setCurrentWordIndex] = useState(0);

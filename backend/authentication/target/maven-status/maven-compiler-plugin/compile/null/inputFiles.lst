@@ -1,0 +1,8 @@
+/Users/brunovieiranobre/Desktop/everything/Projects/sors/backend/authentication/src/main/java/com/sors/controller/AuthController.java
+/Users/brunovieiranobre/Desktop/everything/Projects/sors/backend/authentication/src/main/java/com/sors/dto/LoginDTO.java
+/Users/brunovieiranobre/Desktop/everything/Projects/sors/backend/authentication/src/main/java/com/sors/dto/RegisterDTO.java
+/Users/brunovieiranobre/Desktop/everything/Projects/sors/backend/authentication/src/main/java/com/sors/dto/SubjectDTO.java
+/Users/brunovieiranobre/Desktop/everything/Projects/sors/backend/authentication/src/main/java/com/sors/dto/TokenResponse.java
+/Users/brunovieiranobre/Desktop/everything/Projects/sors/backend/authentication/src/main/java/com/sors/entity/User.java
+/Users/brunovieiranobre/Desktop/everything/Projects/sors/backend/authentication/src/main/java/com/sors/service/AuthService.java
+/Users/brunovieiranobre/Desktop/everything/Projects/sors/backend/authentication/src/main/java/com/sors/util/JwtUtil.java
