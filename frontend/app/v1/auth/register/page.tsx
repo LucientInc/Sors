@@ -1,5 +1,5 @@
 "use client"
-import React from "react";
+import React, { useCallback } from "react";
 import Link from "next/link";
 import { Icons } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
@@ -43,10 +43,19 @@ export default function RegisterPage() {
         profilePicture: "",
     })
 
-    React.useEffect(() => {
-        isEmailEqual()
-    }, []);
+    const isEmailEqual = useCallback(() => {
+        if (email === email2) {
+            setIsEmailValid(true);
+            setNewUser({ ...newUserState, email: email });
+            console.log(newUserState);
+        } else {
+            setIsEmailValid(false);
+        }
+    }, [email, email2, newUserState]);
 
+    React.useEffect(() => {
+        isEmailEqual();
+    }, [isEmailEqual]);
 
     const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         console.log('Form submitted');
@@ -57,16 +66,6 @@ export default function RegisterPage() {
         }
             , 10000)
 
-    }
-
-    const isEmailEqual = () => {
-        if (email === email2) {
-            setIsEmailValid(true)
-            setNewUser({ ...newUserState, email: email })
-            console.log(newUserState)
-        } else {
-            setIsEmailValid(false)
-        }
     }
 
     const PasswordChecker = () => {
