@@ -23,27 +23,11 @@ export default function RegisterPage() {
         email: string,
         password: string,
         confirmPassword: string,
-        firstName: string,
-        lastName: string,
-        city: string,
-        state: string,
-        country: string,
-        birthDate: string,
-        provider: string,
-        profilePicture: string
     }
     const [newUserState, setNewUser] = React.useState<newUser>({
         email: "",
         password: "",
         confirmPassword: "",
-        firstName: "",
-        lastName: "",
-        city: "",
-        state: "",
-        country: "",
-        birthDate: "",
-        provider: "",
-        profilePicture: "",
     })
 
     const isEmailEqual = useCallback(() => {

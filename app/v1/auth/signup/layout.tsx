@@ -1,5 +1,7 @@
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { useContext } from "react";
+import { SignUpProvider } from "@/app/v1/auth/signup/signupcontext";
 
 export const metadata: Metadata = {
     title: "Sors | Gerencie suas finanças com inteligência",
@@ -25,11 +27,15 @@ export const metadata: Metadata = {
     children: React.ReactNode;
   }>) {
     return (
+      <html lang="en">
         <body
           className={`${inter.className} antialiased`}
         >
-          {children}
+          <SignUpProvider>
+            {children}
+          </SignUpProvider>
         </body>
+      </html>
     );
   }
   
