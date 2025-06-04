@@ -25,11 +25,11 @@ export const metadata: Metadata = {
     children: React.ReactNode;
   }>) {
     return (
-        <body
+        <div
           className={`${inter.className} antialiased`}
         >
           {children}
-        </body>
+        </div>
     );
   }
   

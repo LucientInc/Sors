@@ -27,7 +27,6 @@ export const metadata: Metadata = {
     children: React.ReactNode;
   }>) {
     return (
-      <html lang="en">
         <body
           className={`${inter.className} antialiased`}
         >
@@ -35,7 +34,6 @@ export const metadata: Metadata = {
             {children}
           </SignUpProvider>
         </body>
-      </html>
     );
   }
   
