@@ -14,6 +14,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import { useRouter } from 'next/navigation'
 
 export default function Page() {
     const { newUser, setNewUser } = useSignUp();
@@ -21,10 +22,16 @@ export default function Page() {
     const [hasCitiesLoaded, setHasCitiesLoaded] = React.useState(false);
     const [UF, setUF] = React.useState("");
     const [cidades, setCidades] = React.useState<Cidade[]>([]);
+    const router = useRouter();
     function onSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        console.log("Submitting form...");
-        console.log(newUser)
+        if(!newUser.state || !newUser.city) {
+            alert("Por favor, preencha o estado e a cidade.");
+            return;
+        }
+        setIsLoading(true);
+        console.log("Submitting new user:", newUser);
+        router.push('/v1/auth/signup/onboarding/3');
     }
     interface Cidade {
         nome: string;

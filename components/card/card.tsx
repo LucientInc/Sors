@@ -20,7 +20,7 @@ export default function Card({
     <div
       className={clsx(
         'flex flex-row items-center gap-3 rounded-lg p-4 bg-white w-full border border-solid border-[rgb(217,217,217)] cursor-pointer',
-        selected && 'border-[rgb(29,6,238)]'
+        selected && 'outline-[2px] outline-offset-[4px] outline-[rgb(29,6,238)]'
       )}
     >
       <Image

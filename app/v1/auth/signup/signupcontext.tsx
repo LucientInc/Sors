@@ -10,6 +10,7 @@ type newUser = {
     birthDate: string,
     provider: string,
     profilePicture: string
+    onBoardingMotivations?: string[]
 }
 
 const defaultUser: newUser = {
@@ -21,6 +22,7 @@ const defaultUser: newUser = {
     birthDate: "",
     provider: "",
     profilePicture: "",
+    onBoardingMotivations: []
 }
 
 type SignUpContextType = {
